@@ -1,0 +1,155 @@
+<config>
+    <modules>
+        <Matthijs_Adminlogger>
+            <version>0.1.0</version>
+        </Matthijs_Adminlogger>
+    </modules>
+    <global>
+        <models>
+            <matthijs>
+                <class>Matthijs_Adminlogger_Model</class>
+                <resourceModel>matthijs_adminlogger_resource</resourceModel>       
+            </matthijs>
+            <matthijs_adminlogger_resource>
+                <class>Matthijs_Adminlogger_Model_Mysql4</class>
+                <entities>
+                    <adminlogger><table>matthijs_adminlogger</table></adminlogger>
+                </entities>
+            </matthijs_adminlogger_resource>
+        </models>
+        <resources>
+            <matthijs_adminlogger_setup>
+                <setup>
+                    <module>Matthijs_Adminlogger</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </matthijs_adminlogger_setup>
+        </resources>    
+        <blocks>
+            <matthijs>
+                <class>Matthijs_Adminlogger_Block</class>
+            </matthijs>
+        </blocks> 
+        <helpers>
+            <matthijs>
+                <class>Matthijs_Adminlogger_Helper</class>
+            </matthijs>
+        </helpers>
+    </global>
+    <adminhtml>
+        <events>
+             
+
+            <!-- category events -->
+
+            <category_move>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/catalogobserver</class>
+                        <method>categoryMove</method>
+                    </adminlogger>
+                </observers>
+            </category_move>
+
+            <catalog_controller_category_delete>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/catalogobserver</class>
+                        <method>categoryDelete</method>
+                    </adminlogger>
+                </observers>
+            </catalog_controller_category_delete>
+
+            <catalog_category_prepare_save>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/catalogobserver</class>
+                        <method>catalogCategoryPrepareSave</method>
+                    </adminlogger>
+                </observers>
+            </catalog_category_prepare_save>
+
+            <!-- end category events -->
+
+            <!-- product events -->
+            
+
+            <catalog_product_prepare_save>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/catalogobserver</class>
+                        <method>catalogProductPrepareSave</method>
+                    </adminlogger>
+                </observers>
+            </catalog_product_prepare_save>
+
+            <catalog_controller_product_delete>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/catalogobserver</class>
+                        <method>catalogControllerProductDelete</method>
+                    </adminlogger>
+                </observers>
+            </catalog_controller_product_delete>
+
+            
+            
+
+            <!-- end product events -->
+
+            <!-- cms events -->
+
+            <cms_page_prepare_save>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/cmsobserver</class>
+                        <method>cmsPagePrepareSave</method>
+                    </adminlogger>
+                </observers>
+            </cms_page_prepare_save>
+
+            <adminhtml_cmspage_on_delete>
+                <observers>
+                    <adminlogger>
+                        <type>Model</type>
+                        <class>matthijs/cmsobserver</class>
+                        <method>cmsPageOnDelete</method>
+                    </adminlogger>
+                </observers>
+            </adminhtml_cmspage_on_delete>
+
+            <!-- end cms events -->
+            
+           
+
+
+        </events>
+        <layout>
+            <updates>
+                <matthijs>
+                    <file>matthijs_adminlogger.xml</file>
+                </matthijs>
+            </updates>
+        </layout>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <adminlogger after="Mage_Adminhtml">Matthijs_Adminlogger_Adminhtml</adminlogger>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+
+</config>
+

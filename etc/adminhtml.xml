@@ -1,0 +1,40 @@
+<config>
+	<menu>
+		<adminlogger translate="title">
+			<title>Adminlogger</title>
+			<sort_order>40</sort_order>
+			<action>adminhtml/logger/index</action>
+			
+		</adminlogger>
+	</menu>
+
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<adminlogger>
+						<title>Adminlogger Permissions</title>
+						<sort_order>2</sort_order>
+					</adminlogger>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>
+		<!-- 	<children>
+                <manage translate="title" module="customer">
+                    <title>Manage Customers</title>
+                    <action>adminhtml/customer/</action>
+                    <sort_order>0</sort_order>
+                </manage>
+                <group translate="title" module="customer">
+                    <title>Customer Groups</title>
+                    <action>adminhtml/customer_group/</action>
+                    <sort_order>10</sort_order>
+                </group>
+                <online translate="title" module="customer">
+                    <title>Online Customers</title>
+                    <action>adminhtml/customer_online/</action>
+                    <sort_order>100</sort_order>
+                </online>
+            </children> -->
